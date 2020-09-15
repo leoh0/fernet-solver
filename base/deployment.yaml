@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fernet-solver
+  labels:
+    app: fernet-solver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fernet-solver
+  template:
+    metadata:
+      labels:
+        app: fernet-solver
+    spec:
+      containers:
+        - name: fernet-solver
+          image: docker.io/leoh0/fernet-solver:latest
+          imagePullPolicy: Always
+          ports:
+            - name: api
+              containerPort: 8080

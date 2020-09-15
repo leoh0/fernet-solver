@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: fernet-solver
+  name: fernet-solver
+spec:
+  rules:
+    - host: "%{ingress}"
+      http:
+        paths:
+          - backend:
+              serviceName: fernet-solver
+              servicePort: 8080
+            path: /
